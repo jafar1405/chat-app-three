@@ -1,6 +1,7 @@
 import React from 'react';
 import DisplayConversation from './DisplayConversations';
 import MessageBox from './MessageBox';
+import './MessagingPanel.css';
 
 class MessagingPanel extends React.Component{
 
@@ -16,7 +17,7 @@ class MessagingPanel extends React.Component{
     }
 
    connection = new WebSocket(window.location.origin.replace(/^http/, 'ws'))
-   // connection = new WebSocket("ws://localhost:5000")
+   //connection = new WebSocket("ws://localhost:5000")
 
     componentDidMount(){
         this.sound.preload = 'auto';
@@ -24,6 +25,7 @@ class MessagingPanel extends React.Component{
         this.connection.onmessage = (message) =>{
             this.playSound()
             const data = JSON.parse(message.data)
+
             this.setState({
                 messages:[...this.state.messages, data]
             })
@@ -31,24 +33,20 @@ class MessagingPanel extends React.Component{
     }
 
     getMessage = (message) => {
-        
         const data = {
             username:this.props.username,
             message:message
         }
-        // this.connection.onopen = (data) => {
-        //     console.log('hi')
-            
-            
-        // }
-        this.connection.send(JSON.stringify(data))
+        this.connection.send(JSON.stringify(data)) 
+        
     }
+
     render(){
         return(
-            <>
-                <DisplayConversation messages={this.state.messages}/>
+            <div className="mesgs">
+                <DisplayConversation messages={this.state.messages} username={this.props.username}/>
                 <MessageBox getMessage={this.getMessage}/>
-            </>
+            </div>
         )
     }
 }

@@ -16,14 +16,14 @@ class App extends React.Component{
 
   render(){
     return (
-      <div className="App">
+      <>
         {
           !this.state.username?
             <Login handleLogin={this.handleLogin}/>
             :
             <MessagingPanel username={this.state.username}/>
         }
-      </div>
+      </>
     );
   }
 }
