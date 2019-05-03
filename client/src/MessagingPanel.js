@@ -6,13 +6,23 @@ class MessagingPanel extends React.Component{
 
     state = {
         messages:[]
-    }   
+    }     
 
-    connection = new WebSocket(window.location.origin.replace(/^http/, 'ws'))
-    //connection = new WebSocket("ws://localhost:5000")
+    sound = new Audio("../assets/ping.mp3")
+    
+    playSound = () => {
+        let click=this.sound.cloneNode();
+        click.play();
+    }
+
+   connection = new WebSocket(window.location.origin.replace(/^http/, 'ws'))
+   // connection = new WebSocket("ws://localhost:5000")
 
     componentDidMount(){
+        this.sound.preload = 'auto';
+        this.sound.load();
         this.connection.onmessage = (message) =>{
+            this.playSound()
             const data = JSON.parse(message.data)
             this.setState({
                 messages:[...this.state.messages, data]
