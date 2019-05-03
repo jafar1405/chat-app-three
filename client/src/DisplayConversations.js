@@ -2,17 +2,17 @@ import React from 'react';
 
 class DisplayConversation extends React.Component{
     
-    messagesEnd = React.createRef()
+    // messagesEnd = React.createRef()
 
-    componentDidMount () {
-        this.scrollToBottom()
-    }
-    componentDidUpdate () {
-        this.scrollToBottom()
-    }
-    scrollToBottom = () => {
-        this.messagesEnd.current.scrollIntoView({ behavior: 'smooth' })
-    }
+    // componentDidMount () {
+    //     this.scrollToBottom()
+    // }
+    // componentDidUpdate () {
+    //     this.scrollToBottom()
+    // }
+    // scrollToBottom = () => {
+    //     this.messagesEnd.current.scrollIntoView({ behavior: 'smooth' })
+    // }
     render(){
         return(
             <div className="msg_history">
