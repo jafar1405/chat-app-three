@@ -16,8 +16,8 @@ class MessagingPanel extends React.Component{
         click.play();
     }
 
-   //connection = new WebSocket(window.location.origin.replace(/^http/, 'ws'))
-   connection = new WebSocket("ws://localhost:5000")
+   connection = new WebSocket(window.location.origin.replace(/^http/, 'ws'))
+   //connection = new WebSocket("ws://localhost:5000")
 
     componentDidMount(){
         this.sound.preload = 'auto';
