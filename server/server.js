@@ -4,10 +4,11 @@ var express = require("express")
 var app = express()
 var port = process.env.PORT || 5000;
 
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('client/build'))
-}
+// if(process.env.NODE_ENV === 'production'){
+    
+// }
 
+app.use(express.static('client/build'))
 
 var server = http.createServer(app)
 server.listen(port)
